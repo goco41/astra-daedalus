@@ -8,7 +8,12 @@ This project started as a quest to find the theoretical maximum efficiency for f
 *   **Post #1:** 61.35 points
 *   **Post #2:** 62.62 points
 *   **Post #3:** 63.012 points
-*   **Post #4 (Latest):** **67.92 points**
+*   **Post #4 (Latest):** **78.1 points**
+
+**The Story Behind the Big Leap:**
+That massive jump from 63 to the upper echelons actually originated from a **bug** in the code. The algorithm generated a pattern hitting 69 points, but it unfortunately violated some of the game's strict building rules. However, my collaborator **vninect** stepped in and managed to sanitize and improve that bugged layout, reaching a completely valid 72x18 pattern with nearly 70 points. 
+
+Sometime later, vninect achieved an even more impressive "mini" 9x18 pattern scoring 76. I used this mini pattern as a base to push the optimizer even further, scaling and refining it to create a "medium" 27x18 pattern that holds the current record of **78.1**.
 
 ## Project Components
 
@@ -19,12 +24,17 @@ A standalone, browser-based visual editor designed to manually tweak patterns or
 *   **Import/Export:** Seamlessly copy-paste Python arrays to and from the solver.
 *   **Interactive Info:** Click any building to see its current production and synergy status.
 
-### 2. The Solver (`optimizer.py`)
+And a lot more, check upper rigth 'Documentation' to see it all.
+
+### 2. The Solver (`optimizer.py` / `urbek_city_optimizer.ipynb`)
 A heavy-duty optimization script that uses Constraint Programming and Meta-heuristics.
 *   **Google OR-Tools (CP-SAT):** Handles the complex logic of building requirements.
 *   **ALNS (Adaptive Large Neighborhood Search):** A loop that "destroys" parts of the pattern and rebuilds them to find better local optima.
 *   **Numba-Accelerated:** Geometric calculations (Manhattan/Chebyshev distances) are compiled to machine code for speed.
 *   **Tiling Support:** Optimized for $72 \times 9$ blocks with multiple vertical/horizontal stacks.
+
+### 3. The Corruption Algorithm Concept (`corruption.ipynb`)
+The bug that accidentally boosted our score to 69 gave me an idea for a brand new approach based on **rule corruption**. The theory is to deliberately break game rules (relaxing minimums, maximums, or radii) to escape local optima and reach a higher-scoring invalid state, and then run a secondary repair process to "sanitize" it back into legality. I haven't been able to recreate the magic or make this algorithm work perfectly yet, so I am leaving the code and the idea here. If anyone can figure out how to make this corruption-based logic hum, it might be the key to breaking the next major barrier!
 
 ---
 
@@ -37,14 +47,11 @@ pip install ortools numpy numba matplotlib
 ```
 
 ### Running the Solver
-1.  Open the Python script.
-2.  Define your `tipos_usuario` (building rules) and `producciones`.
-3.  Set your time limit (default is set for long-duration deep searches).
-4.  Run the script:
-    ```bash
-    python optimizer.py
-    ```
-5.  The script will output a `patron_optimizado.csv` and a Python-formatted matrix.
+1.  Open the Python script or Jupyter Notebook.
+2.  Define your building requirements in type_catalog (or TYPE_DEFS in the corruption script) and their output in productions.
+3.  Set your time limit (in seconds).
+4.  Run the notebook cell
+5.  The script will output a `patron_clean.csv` and a Python-formatted matrix.
 
 ### Using the Editor
 1.  Open `index.html` in any modern web browser.
@@ -89,4 +96,4 @@ This project is open-source and available under the **GNU General Public License
 If you modify the solver's logic or enhance the optimization algorithms to reach new records, the license requires you to share those improvements under the same terms. Let's keep the Urbek optimization engine open for everyone!
 Feel free to fork, optimize further, and share your scores!
 
-**Can you beat 67.92?** If so, open a PR or post it on Reddit!
+**Can you beat 78.1?** If so, open a PR or post it on Reddit, Steam or Discord!
