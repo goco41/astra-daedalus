@@ -31,7 +31,7 @@ A heavy-duty optimization script that uses Constraint Programming and Meta-heuri
 *   **Google OR-Tools (CP-SAT):** Handles the complex logic of building requirements.
 *   **ALNS (Adaptive Large Neighborhood Search):** A loop that "destroys" parts of the pattern and rebuilds them to find better local optima.
 *   **Numba-Accelerated:** Geometric calculations (Manhattan/Chebyshev distances) are compiled to machine code for speed.
-*   **Tiling Support:** Optimized for $72 \times 9$ blocks with multiple vertical/horizontal stacks.
+*   **Tiling Support:** Optimized for multiple vertical/horizontal stacks.
 
 ### 3. The Corruption Algorithm Concept (`corruption.ipynb`)
 The bug that accidentally boosted our score to 69 gave me an idea for a brand new approach based on **rule corruption**. The theory is to deliberately break game rules (relaxing minimums, maximums, or radii) to escape local optima and reach a higher-scoring invalid state, and then run a secondary repair process to "sanitize" it back into legality. I haven't been able to recreate the magic or make this algorithm work perfectly yet, so I am leaving the code and the idea here. If anyone can figure out how to make this corruption-based logic hum, it might be the key to breaking the next major barrier!
@@ -61,7 +61,7 @@ pip install ortools numpy numba matplotlib
 
 ---
 
-## Building Logic (The "Trifecta" Rules)
+## Building Logic
 The solver respects the complex interdependencies of Urbek's late-game farming:
 *   **Food Plants (10):** Require proximity to Farm Sheds (8).
 *   **Fruit Processors (9):** Require a massive number of Orchards (7).
@@ -76,6 +76,7 @@ This project was born and raised on the r/Urbek subreddit. You can follow the fu
 *   [Update #1: Initial Discovery](https://www.reddit.com/r/urbek/comments/1ldv8mf/is_this_really_the_best_pattern_for_farming/)
 *   [Update #2: Breaking the 62 Barrier](https://www.reddit.com/r/urbek/comments/1lf6s8b/is_this_the_best_pattern_for_farming_update/)
 *   [Update #3: The 63.01 optimization](https://www.reddit.com/r/urbek/comments/1lvmts0/is_this_the_best_pattern_for_farming_update_30/)
+*   [Update #4: The 78.1 big leap](https://steamcommunity.com/app/1411740/discussions/0/807974496347725576/)
 
 ---
 
