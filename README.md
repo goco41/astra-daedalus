@@ -1,5 +1,5 @@
 # Urbek Farming Pattern Optimizer
-### **[Try the Live Interactive Pattern Editor](https://goco41.github.io/Urbek_City_Patterns/)**
+### **[Try the Live Interactive Pattern Editor](https://goco41.github.io/astra-daedalus/)**
 
 This project contains the ultimate toolset for finding and refining farming patterns in **Urbek City Builder**. Developed through an iterative journey documented on Reddit, this repository provides a high-performance Python solver and a web-based visual editor.
 
